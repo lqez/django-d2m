@@ -28,8 +28,9 @@ setup(
     maintainer_email='ez.amiryo' '@' 'gmail.com',
     url='https://github.com/lqez/django-d2m',
 
-    description='',
+    description='Mapping annotated dict list into Django models',
     classifiers=CLASSIFIERS,
 
     install_requires=['django'],
+    test_suite='runtests.runtests',
 )
