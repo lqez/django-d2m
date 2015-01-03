@@ -1,8 +1,8 @@
-version_info = (0, 1, 2)
+version_info = (0, 1, 3)
 
 __version__ = VERSION = '.'.join(map(str, version_info))
-__project__ = PROJECT = 'django-d2m'
 
+import six
 from django.db.models import ForeignKey
 from django.db.models.fields import FieldDoesNotExist
 from django.db.models.query import QuerySet
@@ -50,14 +50,14 @@ def queryset_to_model(qs, basemodel=None):
 
     # Pull out candidates from ids
     candidates = defaultdict(dict)
-    for k, model in matches.iteritems():
+    for k, model in six.iteritems(matches):
         for obj in model.objects.filter(id__in=set([_[k] for _ in qs])):
             candidates[k][obj.id] = obj
 
     # Convert result with candidates
     result = []
     for item in qs:
-        for k, v in candidates.iteritems():
+        for k, v in six.iteritems(candidates):
             item[k] = v[item[k]]
         result.append(item)
 
@@ -73,7 +73,7 @@ def dict_to_model(d, basemodel):
     matches = _get_field_class_matching(basemodel, d)
 
     # Convert
-    for k, model in matches.iteritems():
+    for k, model in six.iteritems(matches):
         d[k] = model.objects.get(id=d[k])
 
     return d

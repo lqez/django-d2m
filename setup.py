@@ -1,5 +1,12 @@
 from setuptools import setup, find_packages
-from django_d2m import VERSION, PROJECT
+import re
+
+
+with open('django_d2m/__init__.py') as f:
+    version = re.search(
+        r'__version__\s*=\s*VERSION\s*=\s*\'(.+?)\'', f.read()
+    ).group(1)
+assert version
 
 
 CLASSIFIERS = [
@@ -9,6 +16,8 @@ CLASSIFIERS = [
     'Intended Audience :: Developers',
     'License :: OSI Approved :: MIT License',
     'Programming Language :: Python :: 2.7',
+    'Programming Language :: Python :: 3.3',
+    'Programming Language :: Python :: 3.4',
     'Programming Language :: Python',
     'Topic :: Internet :: WWW/HTTP',
     'Topic :: Software Development :: Libraries :: Python Modules',
@@ -17,8 +26,8 @@ CLASSIFIERS = [
 
 
 setup(
-    name=PROJECT,
-    version=VERSION,
+    name='django-d2m',
+    version=version,
     packages=find_packages(),
     zip_safe=True,
 
@@ -31,6 +40,6 @@ setup(
     description='Mapping annotated dict list into Django models',
     classifiers=CLASSIFIERS,
 
-    install_requires=['django'],
+    install_requires=['django', 'six'],
     test_suite='runtests.runtests',
 )
