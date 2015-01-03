@@ -1,6 +1,11 @@
 django-d2m
 ==========
 
+.. image:: https://travis-ci.org/lqez/django-d2m.svg?branch=master
+    :target: https://travis-ci.org/lqez/django-d2m
+.. image:: https://img.shields.io/coveralls/lqez/django-d2m.svg
+    :target: https://coveralls.io/r/lqez/django-d2m?branch=master
+
 Mapping annotated dict list into Django models
 
 
