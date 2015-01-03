@@ -1,0 +1,3 @@
+recursive-include django_d2m *
+
+global-exclude *.pyc
