@@ -28,7 +28,7 @@ def _get_field_class_matching(base_model, d):
                     raise NotForeignKey
 
             result[k] = model
-        except FieldDoesNotExist, NotForeignKey:
+        except (FieldDoesNotExist, NotForeignKey):
             continue
 
     return result
