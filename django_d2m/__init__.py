@@ -1,13 +1,14 @@
-version_info = (0, 1, 1)
+version_info = (0, 1, 2)
 
 __version__ = VERSION = '.'.join(map(str, version_info))
 __project__ = PROJECT = 'django-d2m'
 
 from django.db.models import ForeignKey
 from django.db.models.fields import FieldDoesNotExist
+from django.db.models.query import QuerySet
 from collections import defaultdict
 
-__all__ = ['dictlist_to_model', ]
+__all__ = ['queryset_to_model', 'list_to_model', 'dict_to_model']
 
 
 def _get_field_class_matching(base_model, d):
@@ -36,7 +37,8 @@ def _get_field_class_matching(base_model, d):
 
 def queryset_to_model(qs, basemodel=None):
     # Convert queryset to list
-    if isinstance(qs, list):
+    if isinstance(qs, QuerySet):
+        basemodel = qs.model
         qs = list(qs)
 
     # Raise when None
@@ -44,10 +46,7 @@ def queryset_to_model(qs, basemodel=None):
         raise ValueError
 
     # Get field matching table with first one
-    matches = _get_field_class_matching(
-        basemodel if basemodel else qs.model,
-        qs[0]
-    )
+    matches = _get_field_class_matching(basemodel, qs[0])
 
     # Pull out candidates from ids
     candidates = defaultdict(dict)
