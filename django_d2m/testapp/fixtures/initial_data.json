@@ -1,0 +1,124 @@
+[
+    {
+        "fields": {
+            "name": "Korea"
+        },
+        "model": "testapp.country",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "name": "Endor"
+        },
+        "model": "testapp.country",
+        "pk": 2
+    },
+
+    {
+        "fields": {
+            "name": "lqez",
+            "country": 1
+        },
+        "model": "testapp.author",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "name": "Tolkien",
+            "country": 2
+        },
+        "model": "testapp.author",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "name": "Prodo",
+            "country": 2
+        },
+        "model": "testapp.author",
+        "pk": 3
+    },
+
+    {
+        "fields": {
+            "name": "Diary"
+        },
+        "model": "testapp.tag",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "name": "Fiction"
+        },
+        "model": "testapp.tag",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "name": "IT"
+        },
+        "model": "testapp.tag",
+        "pk": 3
+    },
+
+    {
+        "fields": {
+            "title": "Using summernote",
+            "read": 100,
+            "author": 1,
+            "tags": [1, 3]
+        },
+        "model": "testapp.article",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "title": "Your Lord of the Rings",
+            "read": 100,
+            "author": 1,
+            "tags": [1, 2]
+        },
+        "model": "testapp.article",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "title": "The Lord of the Rings I",
+            "read": 10000,
+            "author": 2,
+            "tags": [2]
+        },
+        "model": "testapp.article",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "title": "The Lord of the Rings II",
+            "read": 10000,
+            "author": 2,
+            "tags": [2]
+        },
+        "model": "testapp.article",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "title": "The Lord of the Rings III",
+            "read": 10000,
+            "author": 2,
+            "tags": [2]
+        },
+        "model": "testapp.article",
+        "pk": 5
+    },
+    {
+        "fields": {
+            "title": "My Lord of the Rings",
+            "read": 1000,
+            "author": 3,
+            "tags": [1, 2]
+        },
+        "model": "testapp.article",
+        "pk": 6
+    }
+]
