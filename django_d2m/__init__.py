@@ -18,12 +18,11 @@ def _get_field_class_matching(base_model, d):
 
     for k in d.keys():
         model = base_model
-
         try:
             for field in k.split('__'):
-                field_object, _, direct, m2m = \
+                field_object, _, _, m2m = \
                     model._meta.get_field_by_name(field)
-                if not m2m and direct and isinstance(field_object, ForeignKey):
+                if m2m or isinstance(field_object, ForeignKey):
                     model = field_object.rel.to
                 else:
                     raise NotForeignKey
@@ -45,8 +44,10 @@ def queryset_to_model(qs, basemodel=None):
         raise ValueError
 
     # Get field matching table with first one
-    matches = _get_field_class_matching(basemodel if basemodel else qs.model,
-                                        qs[0])
+    matches = _get_field_class_matching(
+        basemodel if basemodel else qs.model,
+        qs[0]
+    )
 
     # Pull out candidates from ids
     candidates = defaultdict(dict)
